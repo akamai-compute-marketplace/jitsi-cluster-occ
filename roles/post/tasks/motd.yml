@@ -7,11 +7,10 @@
 
 - name: writing jitsi creds into file
   copy:
-    dest: "{{ item.user }}/.credentials"
+    dest: "/home/{{ username }}/.credentials"
     mode: '0600'
+    owner: {{ username }}
+    group: {{ username }}
     content: |
       sudo username: {{ username }}
       sudo password: {{ password }}
-  loop:
-    - {user: "/root"}
-    - {user: "/home/{{ username }}"}
